@@ -3,7 +3,7 @@ Stop-Transcript | out-null
 $ErrorActionPreference = "Continue"
 Start-Transcript -path $env:HOMEPATH\Documents\ValorantUltrawideHack\SysSetup_log.log -append
 
-$launcherPath = $env:HOMEPATH + '\Documents\ValorantUltrawideHack\ValorantLauncher.bat'
+$launcherPath = $env:HOMEPATH + '\ValorantUltrawideHack\ValorantLauncher.bat'
 $ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
 $SearchDir = $env:LOCALAPPDATA + '\VALORANT\Saved\Config'
 $TokenizedResults = gci -Recurse -Filter "GameUserSettings.ini" -File -Path $SearchDir -Force
@@ -33,6 +33,8 @@ function WriteLauncher {
 
     $fName = $ScriptDir + '\ValorantLauncher.bat'
     New-Item $fName
+    'taskkill /IM RiotClientServices.exe /IM RiotClientCrashHandler.exe /F'  | Out-File $fName -Append -encoding "oem"
+    'timeout /t 5 /nobreak > NUL'  | Out-File $fName -Append -encoding "oem"
     'del %HOMEPATH%\Documents\ValorantUltrawideHack\ValorantLauncher_log.log' | Out-File $fName -Append -encoding "oem"
     'set LOGFILE=%HOMEPATH%\Documents\ValorantUltrawideHack\ValorantLauncher_log.log' | Out-File $fName -Append -encoding "oem"
     'call :LOG > %LOGFILE%' | Out-File $fName -Append -encoding "oem"
@@ -49,7 +51,7 @@ function WriteLauncher {
     $WshShell = New-Object -comObject WScript.Shell
     $Shortcut = $WshShell.CreateShortcut($ScriptDir + '\Valorant Ultrawide Launcher.lnk') 
     $Shortcut.TargetPath = $launcherPath
-    $Shortcut.IconLocation = $env:HOMEPATH + '\Documents\ValorantUltrawideHack\launcher.ico'
+    $Shortcut.IconLocation = $env:HOMEPATH + '\ValorantUltrawideHack\launcher.ico'
     $Shortcut.Save()
 
 }
