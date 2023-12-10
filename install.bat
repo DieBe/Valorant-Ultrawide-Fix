@@ -15,15 +15,15 @@ title Kyle's Valorant Ultrawide Patch Installer
 echo Kyle's Valorant Ultrawide Patch Installer
 echo .
 echo .
-copy launcher.ico "%HOMEPATH%\Documents\ValorantUltrawideHack\launcher.ico"
+copy launcher.ico "%HOMEPATH%\ValorantUltrawideHack\launcher.ico"
 echo Launching the big guns! - Getting your system information, graphics settings, and creating your custom Valorant profile...
 Powershell.exe -executionpolicy Unrestricted -File SysSetup.ps1
 
 echo Moving patch files to install directory...
-copy ValorantLauncher.bat "%HOMEPATH%\Documents\ValorantUltrawideHack\ValorantLauncher.bat"
-copy GameUserSettingsSrc.ini "%HOMEPATH%\Documents\ValorantUltrawideHack\GameUserSettingsSrc.ini"
+copy ValorantLauncher.bat "%HOMEPATH%\ValorantUltrawideHack\ValorantLauncher.bat"
+copy GameUserSettingsSrc.ini "%HOMEPATH%\ValorantUltrawideHack\GameUserSettingsSrc.ini"
 echo Creating desktop shortcut...
-copy "Valorant Ultrawide Launcher.lnk" "%HOMEPATH%\Desktop\Valorant Ultrawide Launcher.lnk"
+copy "Valorant Ultrawide Launcher.lnk" "%HOMEPATH%\Valorant Ultrawide Launcher.lnk"
 echo Cleaning up install files...
 del GameUserSettingsSrc.ini
 del ValorantLauncher.bat
